@@ -1,0 +1,11 @@
+{
+"rules": [
+{
+"primary-output": "CMakeFiles/QR_Generator.dir/src/utils/reed_solomon.cpp.o",
+"requires": [
+]
+}
+],
+"version": 0,
+"revision": 0
+}

@@ -1,0 +1,16 @@
+# ninja log v6
+4	185	1727800891862141581	CMakeFiles/QR_Generator.dir/src/utils/reed_solomon.cpp.o.ddi	4dab898eb8faf51c
+4	233	1727800891862141581	CMakeFiles/QR_Generator.dir/src/utils/qr_encoder.cpp.o.ddi	222d389c00e82125
+4	243	1727800891862141581	CMakeFiles/QR_Generator.dir/src/utils/qr_matrix.cpp.o.ddi	761a900a276f7046
+2	262	1727800891860141573	CMakeFiles/QR_Generator.dir/src/main.cpp.o.ddi	ee76fde0bcb67769
+262	267	1727800892125142561	CMakeFiles/QR_Generator.dir/CXX.dd	9ce593262631d0a0
+262	267	1727800892125142561	/home/oloo/CLionProjects/QR-Generator/cmake-build-debug/CMakeFiles/QR_Generator.dir/CXXModules.json	9ce593262631d0a0
+262	267	1727800892125142561	CMakeFiles/QR_Generator.dir/src/main.cpp.o.modmap	9ce593262631d0a0
+262	267	1727800892125142561	CMakeFiles/QR_Generator.dir/src/utils/qr_encoder.cpp.o.modmap	9ce593262631d0a0
+262	267	1727800892125142561	CMakeFiles/QR_Generator.dir/src/utils/reed_solomon.cpp.o.modmap	9ce593262631d0a0
+262	267	1727800892125142561	CMakeFiles/QR_Generator.dir/src/utils/qr_matrix.cpp.o.modmap	9ce593262631d0a0
+268	634	1727800892126142565	CMakeFiles/QR_Generator.dir/src/utils/reed_solomon.cpp.o	1665186749b74c4d
+268	920	1727800892126142565	CMakeFiles/QR_Generator.dir/src/utils/qr_encoder.cpp.o	f1e8ca2ccca71458
+268	1025	1727800892127142568	CMakeFiles/QR_Generator.dir/src/utils/qr_matrix.cpp.o	4063c603b2ef40cb
+268	1090	1727800892126142565	CMakeFiles/QR_Generator.dir/src/main.cpp.o	fe16288362e4ba63
+1090	1347	1727800892948145628	QR_Generator	cc7e446ea4b95da7
