@@ -1,0 +1,3 @@
+/home/oloo/CLionProjects/QR-Generator/cmake-build-debug/CMakeFiles/QR_Generator.dir
+/home/oloo/CLionProjects/QR-Generator/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/oloo/CLionProjects/QR-Generator/cmake-build-debug/CMakeFiles/rebuild_cache.dir
