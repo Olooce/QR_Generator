@@ -19,7 +19,7 @@ int main() {
     qrMatrix.placeData(dataBits);
 
     // Step 5: Apply mask
-    qrMatrix.applyMask(0);  // Example: using mask pattern 0
+    qrMatrix.applyMask(0);  // Using mask pattern 0
 
     // Step 6: Render the QR code
     qrMatrix.render();
