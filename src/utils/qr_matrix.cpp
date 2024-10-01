@@ -10,15 +10,15 @@ QRMatrix::QRMatrix(int version) : version(version), size(21 + 4 * (version - 1))
 }
 
 void QRMatrix::addPositionMarkers() {
-    // Implement logic to add the position markers (7x7 modules each)
+    // TODO: Implement logic to add the position markers (7x7 modules each)
 }
 
 void QRMatrix::placeData(const std::vector<int>& dataBits) {
-    // Implement logic to place data bits and error correction bits on the matrix
+    //TODO: Implement logic to place data bits and error correction bits on the matrix
 }
 
 void QRMatrix::applyMask(int maskPattern) {
-    // Apply one of the 8 mask patterns and calculate penalty score
+    // TODO: Apply one of the 8 mask patterns and calculate penalty score
     // Choose the best mask with the lowest penalty
 }
 
