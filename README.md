@@ -1,6 +1,5 @@
 
 ---
-
 # QR Code Generator
 
 This project is a custom implementation of a QR code generator in C++, supporting up to version 40 QR codes. The goal is to understand the structure and encoding process of QR codes.
