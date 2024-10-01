@@ -1,5 +1,6 @@
 
-```markdown
+---
+
 # QR Code Generator
 
 This project is a custom implementation of a QR code generator in C++, supporting up to version 40 QR codes. The goal is to understand the structure and encoding process of QR codes.
@@ -16,7 +17,7 @@ I am trying to recreate the logic behind QR codes and how they represent data.
 2. Clone the repository.
 3. Run the following commands:
 
-   ```sh
+   ``` sh
    mkdir build
    cd build
    cmake ..
@@ -24,5 +25,5 @@ I am trying to recreate the logic behind QR codes and how they represent data.
    ```
 
 ## Running
-
-```
+ 
+---
