@@ -36820,7 +36820,52 @@ std::vector<int> encodeData(const std::string& data);
 # 6 "/home/oloo/CLionProjects/QR-Generator/src/utils/qr_encoder.cpp" 2
 
 std::vector<int> encodeData(const std::string& data) {
+    std::vector<int> dataBits;
 
 
-    return {};
+    dataBits.push_back(0);
+    dataBits.push_back(1);
+    dataBits.push_back(0);
+    dataBits.push_back(0);
+
+
+    int dataLength = data.length();
+    for (int i = 7; i >= 0; --i) {
+        dataBits.push_back((dataLength >> i) & 1);
+    }
+
+
+    for (char c : data) {
+        for (int i = 7; i >= 0; --i) {
+            dataBits.push_back((c >> i) & 1);
+        }
+    }
+
+
+    int terminatorLength = std::min(4, static_cast<int>(dataBits.capacity() - dataBits.size()));
+    for (int i = 0; i < terminatorLength; ++i) {
+        dataBits.push_back(0);
+    }
+
+
+    while (dataBits.size() % 8 != 0) {
+        dataBits.push_back(0);
+    }
+
+
+    while (dataBits.size() < dataLength * 8) {
+        std::vector<int> padByte1 = {1, 1, 1, 0, 1, 1, 0, 0};
+        std::vector<int> padByte2 = {0, 0, 0, 1, 0, 0, 0, 1};
+
+        for (int bit : padByte1) {
+            dataBits.push_back(bit);
+            if (dataBits.size() >= dataLength * 8) break;
+        }
+        for (int bit : padByte2) {
+            dataBits.push_back(bit);
+            if (dataBits.size() >= dataLength * 8) break;
+        }
+    }
+
+    return dataBits;
 }

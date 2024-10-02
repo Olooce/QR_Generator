@@ -48240,7 +48240,55 @@ QRMatrix::QRMatrix(int version) : version(version), size(21 + 4 * (version - 1))
 
 void QRMatrix::addPositionMarkers() {
 
+    std::vector<std::vector<int>> marker = {
+        {1, 1, 1, 1, 1, 1, 1},
+        {1, 0, 0, 0, 0, 0, 1},
+        {1, 0, 1, 1, 1, 0, 1},
+        {1, 0, 1, 1, 1, 0, 1},
+        {1, 0, 1, 1, 1, 0, 1},
+        {1, 0, 0, 0, 0, 0, 1},
+        {1, 1, 1, 1, 1, 1, 1}
+    };
+
+
+    auto placeMarker = [&](int row, int col) {
+        for (int y = 0; y < 7; ++y) {
+            for (int x = 0; x < 7; ++x) {
+                matrix[row + y][col + x] = marker[y][x];
+            }
+        }
+    };
+
+
+    placeMarker(0, 0);
+    placeMarker(0, size - 7);
+    placeMarker(size - 7, 0);
+
+
+    auto fillSeparator = [&](int rowStart, int colStart, int width, int height) {
+        for (int y = rowStart; y < rowStart + height; ++y) {
+            for (int x = colStart; x < colStart + width; ++x) {
+                if (x >= 0 && x < size && y >= 0 && y < size && matrix[y][x] == -1) {
+                    matrix[y][x] = 0;
+                }
+            }
+        }
+    };
+
+
+    fillSeparator(0, 7, 8, 1);
+    fillSeparator(7, 0, 1, 8);
+
+
+    fillSeparator(0, size - 8, 8, 1);
+    fillSeparator(7, size - 8, 1, 8);
+
+
+    fillSeparator(size - 8, 0, 1, 8);
+    fillSeparator(size - 8, 7, 8, 1);
 }
+
+
 
 void QRMatrix::placeData(const std::vector<int>& dataBits) {
 
