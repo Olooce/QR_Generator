@@ -26399,8 +26399,83 @@ namespace std __attribute__ ((__visibility__ ("default")))
 std::vector<int> generateErrorCorrection(const std::vector<int>& dataBits);
 # 6 "/home/oloo/CLionProjects/QR-Generator/src/utils/reed_solomon.cpp" 2
 
+
+
+int gfMultiply(int a, int b, int primitive) {
+    int result = 0;
+    while (b > 0) {
+        if (b & 1) {
+            result ^= a;
+        }
+        a <<= 1;
+        if (a & 0x100) {
+            a ^= primitive;
+        }
+        b >>= 1;
+    }
+    return result;
+}
+
+
+std::vector<int> gfPolynomialDivision(const std::vector<int>& dividend, const std::vector<int>& divisor, int primitive) {
+    std::vector<int> remainder = dividend;
+
+    for (int i = 0; i <= dividend.size() - divisor.size(); ++i) {
+        int coef = remainder[i];
+        if (coef != 0) {
+            for (int j = 0; j < divisor.size(); ++j) {
+                remainder[i + j] ^= gfMultiply(divisor[j], coef, primitive);
+            }
+        }
+    }
+
+
+    return std::vector<int>(remainder.end() - (divisor.size() - 1), remainder.end());
+}
+
 std::vector<int> generateErrorCorrection(const std::vector<int>& dataBits) {
 
+    int version = 40;
+    int numECCodewords = 30;
 
-    return {};
+
+    std::vector<int> dataBytes;
+    for (int i = 0; i < dataBits.size(); i += 8) {
+        int byte = 0;
+        for (int j = 0; j < 8; ++j) {
+            byte = (byte << 1) | dataBits[i + j];
+        }
+        dataBytes.push_back(byte);
+    }
+
+
+    std::vector<int> generator = {1};
+    int primitive = 0x11d;
+
+    for (int i = 0; i < numECCodewords; ++i) {
+        std::vector<int> term = {1, gfMultiply(2, i, primitive)};
+
+        std::vector<int> newGenerator(generator.size() + 1, 0);
+        for (int j = 0; j < generator.size(); ++j) {
+            newGenerator[j] ^= generator[j];
+            newGenerator[j + 1] ^= gfMultiply(generator[j], term[1], primitive);
+        }
+        generator = newGenerator;
+    }
+
+
+    std::vector<int> dataPoly = dataBytes;
+    dataPoly.resize(dataBytes.size() + numECCodewords, 0);
+
+    std::vector<int> errorCorrectionBytes = gfPolynomialDivision(dataPoly, generator, primitive);
+
+
+    std::vector<int> errorBits;
+    for (int byte : errorCorrectionBytes) {
+        for (int i = 7; i >= 0; --i) {
+            errorBits.push_back((byte >> i) & 1);
+        }
+    }
+
+    return errorBits;
 }
