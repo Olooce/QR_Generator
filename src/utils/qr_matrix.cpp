@@ -59,8 +59,6 @@ void QRMatrix::addPositionMarkers() {
     fillSeparator(size - 8, 7, 8, 1);    // Horizontal line above
 }
 
-
-
 void QRMatrix::placeData(const std::vector<int>& dataBits) {
     //TODO: Implement logic to place data bits and error correction bits on the matrix
 }
