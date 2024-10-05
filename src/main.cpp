@@ -21,7 +21,10 @@ int main() {
     // Step 5: Apply mask
     qrMatrix.applyMask(0);  // Using mask pattern 0
 
-    // Step 6: Render the QR code
+    // Step 6: Generate and save the QR code image
+    qrMatrix.generateImage("qr_code.png");
+
+    // Optionally: Render the QR code to the console (for debugging)
     qrMatrix.render();
 
     return 0;

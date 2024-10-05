@@ -6,6 +6,10 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
 
+QRMatrix::QRMatrix(int version) : version(version), size(21 + 4 * (version - 1)) {
+    matrix = std::vector<std::vector<int>>(size, std::vector<int>(size, -1));
+}
+
 void QRMatrix::addPositionMarkers() {
     // Define the pattern for a 7x7 position marker
     std::vector<std::vector<int>> marker = {

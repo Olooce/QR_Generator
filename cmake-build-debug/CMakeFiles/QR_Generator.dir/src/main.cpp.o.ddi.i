@@ -36819,7 +36819,7 @@ std::vector<int> encodeData(const std::string& data);
 std::vector<int> generateErrorCorrection(const std::vector<int>& dataBits);
 # 3 "/home/oloo/CLionProjects/QR-Generator/src/main.cpp" 2
 # 1 "/home/oloo/CLionProjects/QR-Generator/include/qr_matrix.h" 1
-# 10 "/home/oloo/CLionProjects/QR-Generator/include/qr_matrix.h"
+# 11 "/home/oloo/CLionProjects/QR-Generator/include/qr_matrix.h"
 class QRMatrix {
 public:
     explicit QRMatrix(int version);
@@ -36827,6 +36827,7 @@ public:
     void placeData(const std::vector<int>& dataBits);
     void applyMask(int maskPattern);
     void render() const;
+    void generateImage(const std::string& filename) const;
 
 private:
     int version;
@@ -48273,6 +48274,9 @@ int main() {
 
 
     qrMatrix.applyMask(0);
+
+
+    qrMatrix.generateImage("qr_code.png");
 
 
     qrMatrix.render();
