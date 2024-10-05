@@ -4,10 +4,7 @@
 
 #include "qr_matrix.h"
 #include <iostream>
-
-QRMatrix::QRMatrix(int version) : version(version), size(21 + 4 * (version - 1)) {
-    matrix = std::vector<std::vector<int>>(size, std::vector<int>(size, -1));
-}
+#include <opencv2/opencv.hpp>
 
 void QRMatrix::addPositionMarkers() {
     // Define the pattern for a 7x7 position marker
@@ -146,4 +143,27 @@ void QRMatrix::render() const {
         }
         std::cout << "\n";
     }
+}
+
+void QRMatrix::generateImage(const std::string& filename) const {
+    int scale = 10; // Scale factor for better visibility
+    int imgSize = size * scale;
+
+    // Create a blank image (black background)
+    cv::Mat img = cv::Mat::zeros(imgSize, imgSize, CV_8UC1);
+
+    // Draw the QR code
+    for (int y = 0; y < size; ++y) {
+        for (int x = 0; x < size; ++x) {
+            if (matrix[y][x] == 1) {
+                // Draw a filled square for black modules
+                cv::rectangle(img, cv::Point(x * scale, y * scale),
+                              cv::Point((x + 1) * scale - 1, (y + 1) * scale - 1),
+                              cv::Scalar(255), cv::FILLED);
+            }
+        }
+    }
+
+    // Save the image to a file
+    cv::imwrite(filename, img);
 }
