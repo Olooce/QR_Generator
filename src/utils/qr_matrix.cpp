@@ -60,13 +60,84 @@ void QRMatrix::addPositionMarkers() {
 }
 
 void QRMatrix::placeData(const std::vector<int>& dataBits) {
-    //TODO: Implement logic to place data bits and error correction bits on the matrix
+    int row = size - 1;        // Start at the bottom row
+    int col = size - 1;        // Start at the rightmost column
+    int bitIndex = 0;          // Start from the first bit in dataBits
+    bool upward = true;        // Direction of movement
+
+    while (col > 0) {
+        // Skip the vertical timing line
+        if (col == 6) {
+            col -= 1;
+        }
+
+        for (int i = 0; i < size; ++i) {
+            int currentRow = upward ? (row - i) : (row + i);
+
+            // Make sure the row index is within bounds
+            if (currentRow < 0 || currentRow >= size) {
+                continue;
+            }
+
+            // Place data in the current column
+            for (int j = 0; j < 2; ++j) {
+                int currentCol = col - j;
+
+                // Skip already occupied cells (position markers, separators, etc.)
+                if (matrix[currentRow][currentCol] == -1) {
+                    if (bitIndex < dataBits.size()) {
+                        matrix[currentRow][currentCol] = dataBits[bitIndex++];
+                    } else {
+                        // If all data bits are placed, fill the remaining empty cells with 0
+                        matrix[currentRow][currentCol] = 0;
+                    }
+                }
+            }
+        }
+
+        // Move to the next set of columns
+        col -= 2;
+        upward = !upward;
+    }
 }
 
 void QRMatrix::applyMask(int maskPattern) {
-    // TODO: Apply one of the 8 mask patterns and calculate penalty score
-    // Choose the best mask with the lowest penalty
+    auto applyMaskPattern = [&](int row, int col) {
+        switch (maskPattern) {
+            case 0:
+                return (row + col) % 2 == 0;
+            case 1:
+                return row % 2 == 0;
+            case 2:
+                return col % 3 == 0;
+            case 3:
+                return (row + col) % 3 == 0;
+            case 4:
+                return ((row / 2) + (col / 3)) % 2 == 0;
+            case 5:
+                return ((row * col) % 2) + ((row * col) % 3) == 0;
+            case 6:
+                return (((row * col) % 2) + ((row * col) % 3)) % 2 == 0;
+            case 7:
+                return (((row + col) % 2) + ((row * col) % 3)) % 2 == 0;
+            default:
+                return false;
+        }
+    };
+
+    for (int row = 0; row < size; ++row) {
+        for (int col = 0; col < size; ++col) {
+            // Skip reserved areas (position markers, separators, etc.)
+            if (matrix[row][col] == -1) continue;
+
+            // If the mask condition is met, invert the current bit
+            if (applyMaskPattern(row, col)) {
+                matrix[row][col] ^= 1;  // Invert the bit (0 becomes 1, 1 becomes 0)
+            }
+        }
+    }
 }
+
 
 void QRMatrix::render() const {
     for (int y = 0; y < size; ++y) {
