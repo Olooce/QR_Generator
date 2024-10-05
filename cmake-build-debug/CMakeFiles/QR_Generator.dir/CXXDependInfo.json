@@ -13,7 +13,8 @@
 	"forward-modules-from-target-dirs" : [],
 	"include-dirs" : 
 	[
-		"/home/oloo/CLionProjects/QR-Generator/include"
+		"/home/oloo/CLionProjects/QR-Generator/include",
+		"/usr/include/opencv4"
 	],
 	"language" : "CXX",
 	"linked-target-dirs" : [],

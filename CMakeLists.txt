@@ -5,15 +5,18 @@ set(CMAKE_CXX_STANDARD 20)
 
 # Find OpenCV and include its directories
 find_package(OpenCV REQUIRED)
-include_directories(${OpenCV_INCLUDE_DIRS})
 
-# Link OpenCV to the target
-target_link_libraries(QR_Generator ${OpenCV_LIBS})
-include_directories(include)
-
+# Add the executable target
 add_executable(QR_Generator
         src/main.cpp
         src/utils/qr_encoder.cpp
         src/utils/reed_solomon.cpp
         src/utils/qr_matrix.cpp
 )
+
+# Include directories
+include_directories(${OpenCV_INCLUDE_DIRS})
+include_directories(include)
+
+# Link OpenCV to the target
+target_link_libraries(QR_Generator ${OpenCV_LIBS})
