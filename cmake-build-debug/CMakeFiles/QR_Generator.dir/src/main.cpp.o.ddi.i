@@ -48276,7 +48276,7 @@ int main() {
     qrMatrix.applyMask(0);
 
 
-    qrMatrix.generateImage("/home/oloo/qr_code.png");
+    qrMatrix.generateImage("/qr_code.png");
 
 
     qrMatrix.render();

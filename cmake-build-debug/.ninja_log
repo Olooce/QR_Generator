@@ -67,3 +67,12 @@
 1182	2069	1728157596454496017	CMakeFiles/QR_Generator.dir/src/main.cpp.o	ed71a5a3f4371221
 1184	5330	1728157596456496022	CMakeFiles/QR_Generator.dir/src/utils/qr_matrix.cpp.o	86b26af6ed5db83f
 5330	9154	1728157600602506312	QR_Generator	f34a3351d83f333e
+45	445	1728157725328815874	CMakeFiles/QR_Generator.dir/src/main.cpp.o.ddi	967d0e7d9e35cf1
+445	450	1728157725728816866	CMakeFiles/QR_Generator.dir/CXX.dd	9ce593262631d0a0
+445	450	1728157725728816866	/home/oloo/CLionProjects/QR-Generator/cmake-build-debug/CMakeFiles/QR_Generator.dir/CXXModules.json	9ce593262631d0a0
+445	450	1728157725728816866	CMakeFiles/QR_Generator.dir/src/main.cpp.o.modmap	9ce593262631d0a0
+445	450	1728157725728816866	CMakeFiles/QR_Generator.dir/src/utils/qr_encoder.cpp.o.modmap	9ce593262631d0a0
+445	450	1728157725728816866	CMakeFiles/QR_Generator.dir/src/utils/reed_solomon.cpp.o.modmap	9ce593262631d0a0
+445	450	1728157725728816866	CMakeFiles/QR_Generator.dir/src/utils/qr_matrix.cpp.o.modmap	9ce593262631d0a0
+451	1581	1728157725734816881	CMakeFiles/QR_Generator.dir/src/main.cpp.o	ed71a5a3f4371221
+1582	4144	1728157726865819688	QR_Generator	f34a3351d83f333e
