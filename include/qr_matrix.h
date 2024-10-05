@@ -23,4 +23,4 @@ private:
     std::vector<std::vector<int>> matrix;
 };
 
-#endif //QR_MATRIX_H
+#endif

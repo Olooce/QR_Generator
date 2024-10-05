@@ -5,10 +5,8 @@
 #ifndef REED_SOLOMON_H
 #define REED_SOLOMON_H
 
-
-
 #include <vector>
 
 std::vector<int> generateErrorCorrection(const std::vector<int>& dataBits);
 
-#endif //REED_SOLOMON_H
+#endif

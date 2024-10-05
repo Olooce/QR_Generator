@@ -10,4 +10,4 @@
 
 std::vector<int> encodeData(const std::string& data);
 
-#endif //QR_ENCODER_H
+#endif
