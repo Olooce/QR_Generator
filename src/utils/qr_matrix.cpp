@@ -169,10 +169,5 @@ void QRMatrix::generateImage(const std::string& filename) const {
     }
 
     // Save the image to a file
-    // cv::imwrite(filename, img);
-
-    if (!cv::imwrite(filename, img)) {
-        std::cerr << "Failed to save the image: " << filename << std::endl;
-    }
-
+    cv::imwrite(filename, img);
 }
