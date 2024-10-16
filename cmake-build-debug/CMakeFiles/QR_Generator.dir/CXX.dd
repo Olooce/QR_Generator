@@ -1,9 +1,0 @@
-ninja_dyndep_version = 1.0
-build CMakeFiles/QR_Generator.dir/src/main.cpp.o: dyndep
-
-build CMakeFiles/QR_Generator.dir/src/utils/qr_encoder.cpp.o: dyndep
-
-build CMakeFiles/QR_Generator.dir/src/utils/reed_solomon.cpp.o: dyndep
-
-build CMakeFiles/QR_Generator.dir/src/utils/qr_matrix.cpp.o: dyndep
-
